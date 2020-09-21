@@ -8,9 +8,11 @@ using NaughtyAttributes;
 public class Interactable2D : MonoBehaviour
 {
     [Tooltip("If true, the condtion will check for the gameObjects tag instead of its name")]
-    public bool useTags;
-    //public string[] keys;
-    public List<string> keys;
+    //public bool useTags;
+    ////public string[] keys;
+    //public List<string> keys;
+
+    public string key;
 
     [Header("Events")]
 
@@ -20,71 +22,83 @@ public class Interactable2D : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (useTags)
+        if (collision.CompareTag(key))
         {
-            var tag = collision.transform.root.tag;
-
-            if (keys.Contains(tag))
-            {
-                TriggerEnter.Invoke();
-            }
+            TriggerEnter.Invoke();
         }
+        //if (useTags)
+        //{
+        //    var tag = collision.transform.root.tag;
 
-        else
-        {
-            var parent = collision.transform.root;
+        //    if (keys.Contains(tag))
+        //    {
+        //        TriggerEnter.Invoke();
+        //    }
+        //}
 
-            if (keys.Contains(parent.name))
-            {
-                TriggerEnter.Invoke();
-            }
-        }
+        //else
+        //{
+        //    var parent = collision.transform.root;
+
+        //    if (keys.Contains(parent.name))
+        //    {
+        //        TriggerEnter.Invoke();
+        //    }
+        //}
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (useTags)
+        if (collision.CompareTag(key))
         {
-            var tag = collision.transform.root.tag;
-
-            if (keys.Contains(tag))
-            {
-                TriggerExit.Invoke();
-            }
+            TriggerExit.Invoke();
         }
+        //if (useTags)
+        //{
+        //    var tag = collision.transform.root.tag;
 
-        else
-        {
-            var parent = collision.transform.root;
+        //    if (keys.Contains(tag))
+        //    {
+        //        TriggerExit.Invoke();
+        //    }
+        //}
 
-            if (keys.Contains(parent.name))
-            {
-                TriggerExit.Invoke();
-            }
-        }
+        //else
+        //{
+        //    var parent = collision.transform.root;
+
+        //    if (keys.Contains(parent.name))
+        //    {
+        //        TriggerExit.Invoke();
+        //    }
+        //}
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (useTags)
+        if (collision.CompareTag(key))
         {
-            var tag = collision.transform.root.tag;
-
-            if (keys.Contains(tag))
-            {
-                TriggerStay.Invoke();
-            }
+            TriggerStay.Invoke();
         }
+        //if (useTags)
+        //{
+        //    var tag = collision.transform.root.tag;
 
-        else
-        {
-            var parent = collision.transform.root;
+        //    if (keys.Contains(tag))
+        //    {
+        //        TriggerStay.Invoke();
+        //    }
+        //}
 
-            if (keys.Contains(parent.name))
-            {
-                TriggerStay.Invoke();
-            }
-        }
+        //else
+        //{
+        //    var parent = collision.transform.root;
+
+        //    if (keys.Contains(parent.name))
+        //    {
+        //        TriggerStay.Invoke();
+        //    }
+        //}
     }
 
 
